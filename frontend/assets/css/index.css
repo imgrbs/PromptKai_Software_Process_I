@@ -1,0 +1,26 @@
+@font-face {
+    src: url('../font/supermarket.ttf');
+    font-family: 'supermarket';
+}
+
+html, body {
+    font-family: 'supermarket' !important;
+}
+
+.height-100-vh {
+    min-height: 100vh;
+}
+
+.blue {
+    color: #2F80ED;
+}
+
+button.button-back {
+
+}
+
+button.button-primary {
+    background: #2F80ED;
+    color: #ffffff;
+    font-size: 30px;
+}
