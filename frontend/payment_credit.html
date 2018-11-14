@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PromptKai ft. Software Process I</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="assets/css/payment/payment.css">
+</head>
+<body>
+<button class="button-back fixed-top mt-3 px-2">
+    <img src="assets/img/back.png" alt="arrow">
+</button>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 text-center pt-3 pb-2">
+            <h3 class="mb-0">ชำระเงิน</h3>
+        </div>
+    </div>
+</div>
+<div class="container-fluid pt-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h5>จำนวนที่ต้องชำระ</h5>
+                <h4>฿320.00</h4>
+            </div>
+            <div class="col-12 my-3">
+                <hr/>
+            </div>
+            <div class="col-12">
+                <form>
+                    <label for="name">ชื่อบนบัตร</label>
+                    <input type="text" class="form-control mb-3" id="name" placeholder="ชื่อผู้ถือบัตร">
+                    <label for="credit">เลขบัตร</label>
+                    <input type="number" class="form-control mb-3" id="credit" placeholder="เลข 16 หลักบนบัตร" maxlength="16">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-6 mb-3 pl-0">
+                                <label>วันหมดอายุบัตร</label>
+                                <div class="d-flex justify-content-between">
+                                    <input type="text" class="form-control col-5" id="cc-expirationMonth" placeholder="ดด" required="" maxlength="2">
+                                    <input type="text" class="form-control col-5" id="cc-expirationYear" placeholder="ปป" required="" maxlength="2">
+                                </div>
+                            </div>
+                            <div class="col-6 mb-3">
+                                <label for="cc-cvv">CVV</label>
+                                <input type="text" class="form-control" id="cc-cvv" placeholder="เลข 3 หลัก" required="" size="6" maxlength="3">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<button class="btn rounded-0 fixed-bottom w-100 text-center button-primary pt-2 pb-1">
+    <span>ชำระเงิน</span>
+</button>
+</body>
+<script src="assets/js/libs/jquery.min.js"></script>
+<script src="assets/js/libs/bootstrap.min.js"></script>
+<script src="assets/js/index.js"></script>
+<script src="assets/js/payment/payment.js"></script>
+</html>
