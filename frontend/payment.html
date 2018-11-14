@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PromptKai ft. Software Process I</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="assets/css/product/product_payment.css">
+</head>
+<body>
+<button class="button-back fixed-top mt-3 px-2">
+    <img src="assets/img/back.png" alt="arrow">
+</button>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 text-center pt-3 pb-2">
+            <h3 class="mb-0">ซื้อสินค้า</h3>
+        </div>
+    </div>
+</div>
+<div class="container-fluid pt-3">
+    <div class="row">
+        <div class="col-6">
+            <img class="w-100" src="assets/img/bag.png" alt="item">
+        </div>
+        <div class="col-6">
+            <h5><b>กระเป๋าใส่เหรียญ</b></h5>
+            <h5>ราคา 160 บาท</h5>
+            <h6>จำนวน 2 ชิ้น</h6>
+            <h6 class="blue">รวม 320 บาท</h6>
+        </div>
+        <div class="col-12 my-3">
+            <h6>ชื่อ - ที่อยู่ ผู้รับ</h6>
+            <textarea rows="4" class="w-100 form-control">
+จินตนา บัวบาน
+บ้านเลขที่ 12 หมู่ 5  ตำบลดอยแก้ว
+อำเภอจอมทอง
+จังหวัดเชียงใหม่ 50160
+                </textarea>
+        </div>
+        <div class="col-12">
+            <h6>เลือกวิธีชำระเงิน</h6>
+            <div class="row">
+                <div class="col-4">
+                    <button class="border bg-white rounded-circle pt-1 payment-method">
+                        ชำระเงินปลายทาง
+                    </button>
+                </div>
+                <div class="col-4">
+                    <button style="font-size: 0.8em;" class="border bg-white rounded-circle pt-1 payment-method">
+                        Credit /
+                        Debit Card
+                    </button>
+                </div>
+                <div class="col-4">
+                    <button class="border bg-white rounded-circle pt-1 payment-method">
+                        Counter Service
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<button class="fixed-bottom w-100 text-center button-primary pt-2 pb-1">
+    <span>ยืนยัน</span>
+</button>
+</body>
+<script src="assets/js/libs/jquery.min.js"></script>
+<script src="assets/js/libs/bootstrap.min.js"></script>
+<script src="assets/js/index.js"></script>
+<script src="assets/js/payment/payment.js"></script>
+</html>
