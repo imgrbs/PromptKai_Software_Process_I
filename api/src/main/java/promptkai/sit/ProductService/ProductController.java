@@ -1,10 +1,15 @@
 package promptkai.sit.ProductService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class ProductController {
@@ -17,13 +22,8 @@ public class ProductController {
     }
 
     @GetMapping(name="/product/{productid}")
-    public Product getProducts(@PathVariable String productid){
-        Product product;
-        try {
-            product = productRepository.findById(Integer.parseInt(productid));
-        }catch(Exception e){
-            product = null
-        }
-        return product;
+    public ResponseEntity<Product> getProducts(@PathVariable String productid, HttpServletResponse res){
+        Optional<Product> productOptional = productRepository.findById(Long.parseLong(productid));
+        return productOptional.isPresent() ? new ResponseEntity<Product>(productOptional.get(), HttpStatus.OK) : new ResponseEntity<Product>(HttpStatus.NOT_FOUND);
     }
 }
