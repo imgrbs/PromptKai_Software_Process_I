@@ -15,4 +15,15 @@ public class ProductController {
     public List<Product> getProducts(){
         return productRepository.findAll();
     }
+
+    @GetMapping(name="/product/{productid}")
+    public Product getProducts(@PathVariable String productid){
+        Product product;
+        try {
+            product = productRepository.findById(Integer.parseInt(productid));
+        }catch(Exception e){
+            product = null
+        }
+        return product;
+    }
 }
