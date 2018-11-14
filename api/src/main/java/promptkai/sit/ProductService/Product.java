@@ -1,3 +1,5 @@
+package promptkai.sit.ProductService;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
