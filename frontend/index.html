@@ -101,15 +101,15 @@
         <div class="container-fluid fixed-bottom bg-white py-1" style="box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25)">
             <div class="row">
                 <div class="col-4 text-center">
-                    <img src="assets/img/search.png" alt="search"> <br />
+                    <img height="30px" width="30px" src="assets/img/search.png" alt="search"> <br />
                     ค้นหา
                 </div>
                 <div class="col-4 text-center">
-                    <img src="assets/img/product.png" alt="product"> <br />
-                    สินค้า
+                    <img height="30px" width="30px" src="assets/img/product-blue.png" alt="product"> <br />
+                    <h7 style="color:#1A72E8">สินค้า</h7>
                 </div>
                 <div class="col-4 text-center">
-                    <img src="assets/img/user.png" alt="user"> <br />
+                    <img height="30px" width="30px" src="assets/img/user.png" alt="user"> <br />
                     ประวัติส่วนตัว
                 </div>
             </div>
@@ -119,5 +119,26 @@
 <script src="assets/js/libs/jquery.min.js"></script>
 <script src="assets/js/libs/bootstrap.min.js"></script>
 <script src="assets/js/index.js"></script>
+<script>
+    $(document).ready(function(){
+        $.get('https://promptkai-api-bright-chimpanzee.mybluemix.net/products', function (products, status) {
+            var productElements = '';
+            products.forEach(function (product) {
+                productElements +=
+                    '<div class="col-6 col-lg-3 text-center mb-3">' +
+                    '<div class="card border-0">' +
+                    '<img class="card-img-top" src="assets/img/glass.png" alt="image">' +
+                    '<div class="card-body p-0">' +
+                    '<h5 class="mt-3 mb-0"><b>' + product.productName + '</b></h5>' +
+                    'รหัสสินค้า' + product.id + '<br>' +
+                    product.productPrice + 'บาท<br>' +
+                    '</div></div></div>'    ;
+            })
+            $('#products').html(productElements);
+        })
+
+    })
+      
+</script>
 
 </html>
