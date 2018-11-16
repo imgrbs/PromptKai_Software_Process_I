@@ -24,3 +24,11 @@ button.button-primary {
     color: #ffffff;
     font-size: 30px;
 }
+
+.divied-line{
+    
+    width: 0px;
+    height: 45px;
+    border: 0.75px solid #E0E0E0;
+    
+}
