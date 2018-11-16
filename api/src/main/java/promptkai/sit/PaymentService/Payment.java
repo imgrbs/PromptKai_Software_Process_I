@@ -9,34 +9,33 @@ import java.sql.Date;
 public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long payment_id;
+    private long paymentId;
 
+    private long paymentMethodId;
 
-    private long payment_method_id;
+    private Date paidDate;
 
-    private Date paid_date;
-
-    public long getPayment_id() {
-        return payment_id;
+    public long getPaymentId() {
+        return paymentId;
     }
 
-    public void setPayment_id(long payment_id) {
-        this.payment_id = payment_id;
+    public void setPaymentId(long paymentId) {
+        this.paymentId = paymentId;
     }
 
-    public long getPayment_method_id() {
-        return payment_method_id;
+    public long getPaymentMethodId() {
+        return paymentMethodId;
     }
 
-    public void setPayment_method_id(long payment_method_id) {
-        this.payment_method_id = payment_method_id;
+    public void setPaymentMethodId(long paymentMethodId) {
+        this.paymentMethodId = paymentMethodId;
     }
 
-    public Date getPaid_date() {
-        return paid_date;
+    public Date getPaidDate() {
+        return paidDate;
     }
 
-    public void setPaid_date(Date paid_date) {
-        this.paid_date = paid_date;
+    public void setPaidDate(Date paidDate) {
+        this.paidDate = paidDate;
     }
 }
