@@ -25,10 +25,18 @@ button.button-primary {
     font-size: 30px;
 }
 
+.menu-font{
+    font-size: 14px;
+}
+
+.selected-menu{
+    color: #1A72E8;
+}
+
 .divied-line{
     
     width: 0px;
     height: 45px;
-    border: 0.75px solid #E0E0E0;
+    border: 0.70px solid #E0E0E0;
     
 }
