@@ -5,8 +5,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-
-import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,14 +14,23 @@ public class PaymentController {
     @Autowired
     private PaymentRepository paymentRepository;
 
-    @GetMapping(name="/payments")
-    public List<Payment> getPayment(){
-        return paymentRepository.findAll();
+    @RequestMapping(
+            value = "/payments",
+            method = RequestMethod.GET
+    )
+    public ResponseEntity<List<Payment>> getPayments(){
+        return new ResponseEntity<List<Payment>>(paymentRepository.findAll(), HttpStatus.OK);
     }
 
-    @GetMapping(name="/payments/{payment_id}" )
-    public ResponseEntity<Payment> get(@PathVariable long payment_id, HttpServletResponse res){
-        Optional<Payment> paymentOptional = paymentRepository.findById(payment_id);
-        return paymentOptional.isPresent() ? new ResponseEntity<Payment>(paymentOptional.get(), HttpStatus.OK) : new ResponseEntity<Payment>(HttpStatus.NOT_FOUND);
+    @RequestMapping(
+            value = "/payment/{paymentId:[\\d]}",
+            method = RequestMethod.GET
+    )
+    public ResponseEntity<Payment> getById(@PathVariable("paymentId") Long paymentId){
+        Optional<Payment> paymentOptional = paymentRepository.findById(paymentId);
+        if (paymentOptional.isPresent()) {
+            return  new ResponseEntity<Payment>(paymentOptional.get(), HttpStatus.OK);
+        }
+        return new ResponseEntity<Payment>(HttpStatus.NOT_FOUND);
     }
 }
