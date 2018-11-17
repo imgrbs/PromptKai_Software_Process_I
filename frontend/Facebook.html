@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Facebook Login JavaScript Example</title>
+<meta charset="UTF-8">
+</head>
+<body>
+<script>
+ 
+ (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+
+
+ window.fbAsyncInit = function() {
+    FB.init({
+      appId            : '257585084911795',
+      autoLogAppEvents : true,
+      xfbml            : true,
+      version          : 'v3.2'
+    });
+  };
+
+ function fblogin() {
+   FB.getLoginStatus(function(response){
+     if(response.status == 'connected'){
+      getUserProfile();
+     }else{
+
+      FB.login();
+      fblogin();
+       console.log(response);
+       $("#status").empty().text("Please login with facebook.");
+     }
+
+   });
+ }
+
+ function getUserProfile(){
+   console.log('Fetching user information.... ');
+   FB.api('/me', 'GET', {fields: 'first_name,last_name,name,id,picture.width(150).height(150)'}, function(response) {
+     console.log(response);
+     var profilePic = "http://graph.facebook.com/"+response.id+"/picture?type=large";
+     var userInfo = "<img src='"+profilePic+"'><br/>";
+      userInfo += response.name+"("+response.gender+")<br/>";
+      userInfo += response.email+"<br/>"
+      $("$status").empty().html(userInfo);
+			});
+ }
+</script>
+ 
+
+
+
+
+<script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js">
+</script>
+</body>
+</html>
