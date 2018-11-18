@@ -4,8 +4,8 @@ $(document).ready(function () {
             var productElements = '';
             data.forEach(function (product) {
                 productElements +=
-                    '<a style="color:black ; text-decoration: none" href="product_detail.html?productid="'+
-                    product.id+'><div class="col-6 col-lg-3 text-center mb-3">' +
+                    '<a style="color:black ; text-decoration: none" href="product_detail.html?productid='+
+                    product.id+'"><div class="col-6 col-lg-3 text-center mb-3">' +
                     '<div class="card border-0">' +
                     '<img class="card-img-top" src="assets/img/glass.png" alt="image">' +
                     '<div class="card-body p-0">' +
