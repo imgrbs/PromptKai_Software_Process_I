@@ -20,48 +20,68 @@
         </div>
     </div>
 </div>
-<div class="container-fluid pt-3">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h5>จำนวนที่ต้องชำระ</h5>
-                <h4>฿320.00</h4>
-            </div>
-            <div class="col-12 my-3">
-                <hr/>
-            </div>
-            <div class="col-12">
-                <form>
-                    <label for="name">ชื่อบนบัตร</label>
-                    <input type="text" class="form-control mb-3" id="name" placeholder="ชื่อผู้ถือบัตร">
-                    <label for="credit">เลขบัตร</label>
-                    <input type="number" class="form-control mb-3" id="credit" placeholder="เลข 16 หลักบนบัตร" maxlength="16">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-6 mb-3 pl-0">
-                                <label>วันหมดอายุบัตร</label>
-                                <div class="d-flex justify-content-between">
-                                    <input type="text" class="form-control col-5" id="cc-expirationMonth" placeholder="ดด" required="" maxlength="2">
-                                    <input type="text" class="form-control col-5" id="cc-expirationYear" placeholder="ปป" required="" maxlength="2">
+<form id="checkout">
+    <div class="container-fluid pt-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h5>จำนวนที่ต้องชำระ</h5>
+                    <h4>฿320.00</h4>
+                </div>
+                <div class="col-12 my-3">
+                    <hr/>
+                </div>
+                <div class="col-12">
+                        <div id="token_errors"></div>
+                        <input type="hidden" name="omise_token">
+                        <label for="name">ชื่อบนบัตร</label>
+                        <input data-omise="holder_name" type="text" class="form-control mb-3" id="name" placeholder="ชื่อผู้ถือบัตร" required>
+                        <label for="credit">เลขบัตร</label>
+                        <input data-omise="number" type="text" class="form-control mb-3" id="credit" placeholder="เลข 16 หลักบนบัตร" maxlength="16" required>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-6 mb-3 pl-0">
+                                    <label>วันหมดอายุบัตร</label>
+                                    <div class="d-flex justify-content-between">
+                                        <input data-omise="expiration_month" type="text" class="form-control col-5" id="cc-expirationMonth" placeholder="ดด" required="" maxlength="2">
+                                        <input data-omise="expiration_year" type="text" class="form-control col-5" id="cc-expirationYear" placeholder="ปป" required="" maxlength="4">
+                                    </div>
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <label for="cc-cvv">CVV</label>
+                                    <input data-omise="security_code" type="text" class="form-control" id="cc-cvv" placeholder="เลข 3 หลัก" required="" size="6" maxlength="3">
                                 </div>
                             </div>
-                            <div class="col-6 mb-3">
-                                <label for="cc-cvv">CVV</label>
-                                <input type="text" class="form-control" id="cc-cvv" placeholder="เลข 3 หลัก" required="" size="6" maxlength="3">
-                            </div>
                         </div>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<button class="btn rounded-0 fixed-bottom w-100 text-center button-primary pt-2 pb-1">
-    <span>ชำระเงิน</span>
-</button>
+    <button type='submit' id="create_token" class="btn rounded-0 fixed-bottom w-100 text-center button-primary pt-2 pb-1">
+        <span>ชำระเงิน</span>
+    </button>
+</form>
+
+<form name="checkoutForm" method="POST" action="http://localhost:8080/payment">
+    <input type="hidden" name="description" value="Product order ฿100.25" />
+    <script type="text/javascript" src="https://cdn.omise.co/card.js"
+        data-key="pkey_test_5dy8qdzhwano9n1by3v"
+        data-image="PATH_TO_LOGO_IMAGE"
+        data-frame-label="PromptKai"
+        data-button-label="ชำระเงิน"
+        data-submit-label="ยืนยัน"
+        data-location="yes"
+        data-amount="10025"
+        data-currency="thb"
+        >
+    </script>
+</form>
+
 </body>
+<script src="https://cdn.omise.co/omise.js"></script>
 <script src="assets/js/libs/jquery.min.js"></script>
 <script src="assets/js/libs/bootstrap.min.js"></script>
+
 <script src="assets/js/index.js"></script>
-<script src="assets/js/payment/payment.js"></script>
+<script src="assets/js/payment/payment_credit.js"></script>
 </html>

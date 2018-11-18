@@ -1,5 +1,8 @@
 package promptkai.sit.PaymentService;
 
+import co.omise.Client;
+import co.omise.models.Charge;
+import co.omise.models.Token;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +16,28 @@ import java.util.Optional;
 public class PaymentController {
     @Autowired
     private PaymentRepository paymentRepository;
+
+    @RequestMapping(
+            value = "/payment",
+            method = RequestMethod.POST,
+            params = {"omiseToken", "description"}
+    )
+    public ResponseEntity<List<Payment>> savePayments(
+            @RequestParam(value = "omiseToken") String token,
+            @RequestParam(value = "description") String description
+        ) {
+        try {
+            Client client = new Client("skey_test_5dy8qdzi5g8ofgar25g");
+            Charge charge = client.charges()
+                    .create(new Charge.Create()
+                            .amount(100000)
+                            .currency("thb")
+                            .card(token));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return new ResponseEntity<List<Payment>>(paymentRepository.findAll(), HttpStatus.OK);
+    }
 
     @RequestMapping(
             value = "/payments",
