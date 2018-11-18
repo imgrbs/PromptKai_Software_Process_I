@@ -16,14 +16,7 @@ public class FacebookAuthFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException, HttpClientErrorException {
-        Cookie[] cookies = request.getCookies();
-        String accessToken = null;
-        for (Cookie cookie : cookies) {
-            if (cookie.getName().equals("token")) {
-                accessToken = cookie.getValue();
-                break;
-            }
-        }
+        String accessToken = request.getHeader("Authorization");
         if (accessToken != null) {
             RestTemplate restTemplate = new RestTemplate();
             String url = FACEBOOK_API + "/v3.2/me?" + FIELDS + "&access_token=" + accessToken;
