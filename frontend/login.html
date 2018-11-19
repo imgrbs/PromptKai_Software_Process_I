@@ -6,14 +6,23 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login | PromptKai ft. Software Process I</title>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="assets/css/login.css">
 </head>
 <body>
+        <div class="loginBox">
+            <img src="assets/img/user.png" class="user">
+            <h2>เข้าสู่ระบบด้วย Facebook</h2>
+            <div class="facebookBox">
+                <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+                </fb:login-button>
+            </div>
+        </div>
 
-    <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-    </fb:login-button>
 
-    <div id="status">
+
+
+
+    <div id="status" class="facebutton">
     </div>
 
 </body>
