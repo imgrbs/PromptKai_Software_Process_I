@@ -1,0 +1,103 @@
+{
+	"info": {
+		"_postman_id": "0f3aef79-9a8b-4c9c-91f6-9576aa9272b1",
+		"name": "products",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetAllProducts",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b5ae7f58-6390-44d3-b492-1cb65a7fd9e1",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Get all products should return every products in \\\" products \\\" table\", function () {",
+							"    var products = pm.response.json();",
+							"    var [ product1, product2 ] = products",
+							"    pm.expect(product1.id).to.eql(1);",
+							"    pm.expect(product1.productName).to.eql(\"กระเป๋าใส่เหรียญ\")",
+							"    pm.expect(product1.productDetail).to.eql(\"กระเป๋าใส่เหรียญ ดีไซน์เก๋ๆ ขนาดสามารถใส่บัตรได้ มีซิปเพื่อความปลอดภัย วัสดุทนทาน ทำความสะอาดง่าย\")",
+							"    pm.expect(product1.productPrice).to.eql(\"150.0\")",
+							"    pm.expect(product1.productType).to.eql(\"เสื้อผ้าแฟชั่นผู้หญิง>เสื้อ>เสื้อเชิ้ต\")",
+							"    pm.expect(product2.id).to.eql(2);",
+							"    pm.expect(product2.productName).to.eql(\"Bag\")",
+							"    pm.expect(product2.productDetail).to.eql(\"Yellow Bag\")",
+							"    pm.expect(product2.productPrice).to.eql(\"199.0\")",
+							"    pm.expect(product2.productType).to.eql(\"Fashion\")",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{API_URL}}/products",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findByProductId",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4bcac178-ace4-4a9d-98e4-81bca405c455",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Get product by using ProductId should return product with that id\", function () {",
+							"    var product = pm.response.json();",
+							"    pm.expect(product.id).to.eql(1);",
+							"    pm.expect(product.productName).to.eql(\"กระเป๋าใส่เหรียญ\");",
+							"    pm.expect(product.productDetail).to.eql(\"กระเป๋าใส่เหรียญ ดีไซน์เก๋ๆ ขนาดสามารถใส่บัตรได้ มีซิปเพื่อความปลอดภัย วัสดุทนทาน ทำความสะอาดง่าย\");",
+							"    pm.expect(product.productPrice).to.eql(\"150.0\")",
+							"    pm.expect(product.productType).to.eql(\"เสื้อผ้าแฟชั่นผู้หญิง>เสื้อ>เสื้อเชิ้ต\")",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{API_URL}}/product/{{productId}}",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"product",
+						"{{productId}}"
+					]
+				},
+				"description": "get products searching by id"
+			},
+			"response": []
+		}
+	]
+}
