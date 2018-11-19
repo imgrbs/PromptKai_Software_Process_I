@@ -14,3 +14,14 @@ $(document).ready(function () {
         }
     });
 });
+
+
+$('#buybtn').click(function(){
+    var url_string = window.location.href;
+    var url = new URL(url_string);
+    var productId = url.searchParams.get("productid");
+    var productName = document.getElementById ( "productname" ).innerText
+    var productPrice = document.getElementById ( "productprice" ).innerText
+    var quantity = document.getElementById ( "quantity" ).value
+   window.location.href='payment.html?productid='+productId+'&productname='+productName+'&productprice='+productPrice+'&quantity='+quantity;
+})
