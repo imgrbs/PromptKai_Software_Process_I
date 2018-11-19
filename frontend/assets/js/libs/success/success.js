@@ -1,3 +1,3 @@
 $(document).ready(function () {
-     window.location.href='success.html';
-});
+     window.location.href='index.html';
+ });
