@@ -43,6 +43,7 @@ window.fbAsyncInit = function() {
 
 function fetchUser() {
     return FB.api('/me', function(response) {
+        Cookies.set('userId', response.id);
         console.log('Successful login for: ' + response.name);
         console.log('Access Token = '+ access_token);
     });
