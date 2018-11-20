@@ -60,14 +60,23 @@ function setProfile() {
 
 function redirectPreviousPath(){
     const cookiePath = Cookies.get('path');
-    if (cookiePath && window.location.pathname != cookiePath) {
+    let path = window.location.pathname;
+    let search = window.location.search;
+    if (search) {
+        path += search;
+    }
+    if (cookiePath && path != cookiePath) {
         return window.location.replace(cookiePath);
     }
     Cookies.remove('path');
 }
 
 function redirectToLogin(){
-    const path = window.location.pathname;
+    let path = window.location.pathname;
+    let search = window.location.search;
+    if (search) {
+        path += search;
+    }
     if (!path.includes('login')) {
         Cookies.set('path', path);
         return window.location.replace("/login");
