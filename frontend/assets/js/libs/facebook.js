@@ -75,3 +75,11 @@ function testAPI() {
 function lgToProfile(){
     var name = '<img src="assets/img/profile-success.png">';
 }
+
+function logout() {
+    console.log('logout')
+    FB.logout(function(response) {
+        console.log(response)
+    });
+}
+
