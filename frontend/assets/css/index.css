@@ -30,6 +30,12 @@ button.button-primary {
     font-size: 30px;
 }
 
+button.button-login {
+    background: #2F80ED;
+    color: #ffffff;
+    font-size: 15px;
+}
+
 .menu-font{
     font-size: 14px;
 }
