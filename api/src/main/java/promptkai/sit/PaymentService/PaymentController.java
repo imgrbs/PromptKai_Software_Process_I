@@ -1,22 +1,28 @@
 package promptkai.sit.PaymentService;
 
-import co.omise.Client;
-import co.omise.models.Charge;
-import co.omise.models.Token;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+
+import co.omise.Client;
+import co.omise.models.Charge;
+import co.omise.models.Token;
+
+import promptkai.sit.OrderService.Order;
+import promptkai.sit.OrderService.OrderRepository;
 
 @RestController
 @CrossOrigin("*")
 public class PaymentController {
     @Autowired
     private PaymentRepository paymentRepository;
+    private OrderRepository orderRepository;
 
     private String CURRENCY = "thb";
 
@@ -33,9 +39,11 @@ public class PaymentController {
             Client client = new Client("skey_test_5dy8qdzi5g8ofgar25g");
             Charge charge = client.charges()
                     .create(new Charge.Create()
-                            .amount(100000)
+                            .amount(36000)
                             .currency(this.CURRENCY)
                             .card(token));
+            orderRepository.save(new Order(new Date(),1,360));
+            paymentRepository.save(new Payment(1,new Date(),client.hashCode()));
         } catch (Exception e) {
             e.printStackTrace();
         }
