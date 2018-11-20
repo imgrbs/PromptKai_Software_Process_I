@@ -1,8 +1,8 @@
 function statusChangeCallback(response) {
     console.log('statusChangeCallback');
     if (response.status === 'connected') {
-        testAPI();
         lgToProfile();
+        fetchUser();
     } else {
     }
 }
@@ -24,8 +24,8 @@ window.fbAsyncInit = function() {
 
 };
 
-function testAPI() {
-    FB.api('/me', function(response) {
+function fetchUser() {
+    return FB.api('/me', function(response) {
         console.log('Successful login for: ' + response.name);
     });
 }
