@@ -9,6 +9,7 @@ function statusChangeCallback(response) {
     if (response.status === 'connected') {
         // Logged into your app and Facebook.
         testAPI();
+        lgToProfile();
     } else {
         // The person is not logged into your app or we are unable to tell.
         document.getElementById('status').innerHTML = 'Please log ' +
@@ -69,3 +70,15 @@ function testAPI() {
         console.log('Successful login for: ' + response.name);
     });
 }
+
+function lgToProfile(){
+    var name = '<img src="assets/img/profile-success.png">';
+}
+
+function logout() {
+    console.log('logout')
+    FB.logout(function(response) {
+        console.log(response)
+    });
+}
+
