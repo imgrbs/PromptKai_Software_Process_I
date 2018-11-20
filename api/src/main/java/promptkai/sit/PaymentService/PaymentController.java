@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
 import java.util.Optional;
@@ -24,7 +25,7 @@ public class PaymentController {
             method = RequestMethod.POST,
             params = {"omiseToken", "description"}
     )
-    public ResponseEntity<List<Payment>> savePayments(
+    public RedirectView savePayments(
             @RequestParam(value = "omiseToken") String token,
             @RequestParam(value = "description") String description
         ) {
@@ -35,11 +36,10 @@ public class PaymentController {
                             .amount(100000)
                             .currency(this.CURRENCY)
                             .card(token));
-
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return new ResponseEntity<List<Payment>>(paymentRepository.findAll(), HttpStatus.OK);
+        return new RedirectView("http://sit-promptkai.netlify.com/success");
     }
 
     @RequestMapping(
