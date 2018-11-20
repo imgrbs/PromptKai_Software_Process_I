@@ -40,7 +40,7 @@ $('#type').on('change', function() {
                 filterEng = "";
         }
 
-        $.get("https://promptkai-api-bright-chimpanzee.mybluemix.net/products?filter="+filter, function (data, status) {
+        $.get("https://promptkai-api-bright-chimpanzee.mybluemix.net/products?filter="+filterEng, function (data, status) {
             if (status == 'success') {
                 var productElements = '';
                 data.forEach(function (product) {
