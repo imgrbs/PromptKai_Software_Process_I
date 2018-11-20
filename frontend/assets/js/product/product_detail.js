@@ -25,5 +25,5 @@ $('#buybtn').click(function(){
     var productName = document.getElementById ( "productname" ).innerText
     var productPrice = document.getElementById ( "productprice" ).innerText
     var quantity = document.getElementById ( "quantity" ).value
-   window.location.href='payment.html?productid='+productId+'&productname='+productName+'&productprice='+productPrice+'&quantity='+quantity;
+   window.location.href='payment.html?productid='+productId+'&quantity='+quantity;
 })
