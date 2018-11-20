@@ -9,7 +9,6 @@ function statusChangeCallback(response) {
     if (response.status === 'connected') {
         // Logged into your app and Facebook.
         testAPI();
-        window.location.href='profile.html';
         lgToProfile();
     } else {
         // The person is not logged into your app or we are unable to tell.
