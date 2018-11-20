@@ -44,7 +44,7 @@ public class PaymentController {
                             .currency(this.CURRENCY)
                             .card(token));
             orderRepository.save(new Order(new Date(),1,320));
-            Payment insertingPayment = new Payment("Credit Card",new Date(),client.hashCode(),new OrderDetail());
+            Payment insertingPayment = new Payment("Credit Card",new Date(),client.hashCode());
             paymentRepository.save(insertingPayment);
         } catch (Exception e) {
             e.printStackTrace();
