@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $.get("http://promptkai-api-bright-chimpanzee.mybluemix.net/products", function (data, status) {
+    $.get("https://promptkai-api-bright-chimpanzee.mybluemix.net/products", function (data, status) {
         if (status == 'success') {
             var productElements = '';
             data.forEach(function (product) {
