@@ -16,8 +16,16 @@ public class ProductController {
     private ProductRepository productRepository;
 
     @GetMapping(value="/products")
-    public List<Product> getProducts(){
-        return productRepository.findAll();
+    public List<Product> getProducts(WebRequest webRequest){
+        Map<String, String[]> params = webRequest.getParameterMap();
+        String[] filterArr = params.get("filter");
+        String filter;
+        if( filterArr!=null && filterArr[0]!="" ){
+            filter = filterArr[0];
+            return productRepository.findByProductType(filter);
+        }else{
+            return productRepository.findAll();
+        }
     }
 
     @GetMapping(value="/product/{productid}")

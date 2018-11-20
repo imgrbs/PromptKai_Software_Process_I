@@ -19,8 +19,6 @@ public class Payment {
 
     private String userId;
 
-    private OrderDetail orderDetail;
-
     public Payment() {
     }
 
@@ -28,7 +26,6 @@ public class Payment {
         this.paymentMethod = paymentMethod;
         this.paidDate = paidDate;
         this.userId = userId;
-        this.orderDetail = orderDetail;
     }
 
     public long getPaymentId() {
@@ -53,14 +50,6 @@ public class Payment {
 
     public void setUserId(String userId) {
         this.userId = userId;
-    }
-
-    public OrderDetail getOrderDetail() {
-        return orderDetail;
-    }
-
-    public void setOrderDetail(OrderDetail orderDetail) {
-        this.orderDetail = orderDetail;
     }
 
     public Date getPaidDate() {
