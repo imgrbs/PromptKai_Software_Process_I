@@ -43,6 +43,7 @@ window.fbAsyncInit = function() {
 
 function fetchUser() {
     return FB.api('/me', function(response) {
+        Cookies.set('userId', response.id);
         console.log('Successful login for: ' + response.name);
         console.log(response);
     });
@@ -55,6 +56,10 @@ function setProfile() {
             document.getElementById("profile_image").setAttribute("src", "https://graph.facebook.com/" + response.id + "/picture?type=normal");
             document.getElementById("name").innerText = response.name;
             document.getElementById("email").innerText = response.email;
+        }
+        var userIdElement = document.getElementById("userId");
+        if (userIdElement) {
+            userIdElement.value = response.id;
         }
     });
 }

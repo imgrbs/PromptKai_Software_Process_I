@@ -2,17 +2,20 @@ document.getElementsByClassName('omise-checkout-button')[0].className = 'omise-c
 
 const params = new URLSearchParams(window.location.search);
 const quantity = params.get('quantity');
-const prodoctId = params.get('productid');
+const productId = params.get('productid');
 
-$.get("https://promptkai-api-bright-chimpanzee.mybluemix.net/product/"+prodoctId, function (product, status) {
+$.get("https://promptkai-api-bright-chimpanzee.mybluemix.net/product/"+productId, function (product, status) {
     if (status === 'success') {
-        const productprice = product.productPrice
-        const totalPrice = quantity * productprice
+        const productprice = product.productPrice;
+        const totalPrice = quantity * productprice;
         $('#productname').text(product.productName);
         $('#productprice').text(productprice);
         $('#productimg').attr('src', product.imgPath);
         $('#totalprice').text(totalPrice);
         $('#quantity').text(quantity)
+
+        $('#productId').text(product.id);
+        $('#totalPrice').text(totalPrice);
 
         document.getElementById('description').value = 'Product order ฿' + totalPrice + '.00'
         document.getElementById('omise').setAttribute('data-amount', totalPrice * 100)
