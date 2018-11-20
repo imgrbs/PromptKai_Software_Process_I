@@ -11,14 +11,17 @@
 </head>
 
 <body>
-    <div class="col-md-12">
-        <div style="margin-top: 15px">
+<div id='profile_section' class="container-fluid py-5">
+    <div class="row">
+        <div class="col-md-12">
             <h3 class="text-center">
                 <strong>ประวัติส่วนตัว</strong>
             </h3>
         </div>
-        <div id="pfnot" class="col-12 text-center">
-            <img src="assets/img/user(2).png">
+        <div class="col-12 text-center">
+            <img id='profile_image' src="assets/img/user_profile.png">
+            <h4 id='name' class="mt-4 mb-0">Guest</h4>
+            <h5 id='email'>Guest@gmail.com</h5>
             <div class="col-12">
                 <button onClick="logout()" class="btn btn-danger text-center">
                     <span>ออกจากระบบ</span>
@@ -26,47 +29,34 @@
             </div>
         </div>
     </div>
+</div>
 
 
-    <div class="container-fluid fixed-bottom bg-white" style="box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25)">
-        <div class="row menu-font">
-            <div class="col-5 text-center ">
-                <a href="index.html" style="color:black;text-decoration: none">
-                    <img height="30px" width="30px" src="assets/img/product.png" alt="product"> <br />
-                    สินค้า
-                </a>
-            </div>
-            <div class="col-2 py-1">
-                <center>
-                    <div class="divied-line"></div>
-                </center>
-            </div>
-
-            <div class="col-5 text-center selected-menu">
-                <img height="30px" width="30px" src="assets/img/user-blue.png" alt="user"> <br />
-                ประวัติส่วนตัว
-            </div>
-
+<div class="container-fluid fixed-bottom bg-white" style="box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25)">
+    <div class="row menu-font">
+        <div class="col-5 text-center ">
+            <a href="index.html" style="color:black;text-decoration: none">
+                <img height="30px" width="30px" src="assets/img/product.png" alt="product"> <br />
+                สินค้า
+            </a>
         </div>
+        <div class="col-2 py-1">
+            <center>
+                <div class="divied-line"></div>
+            </center>
+        </div>
+
+        <div class="col-5 text-center selected-menu">
+            <img height="30px" width="30px" src="assets/img/user-blue.png" alt="user"> <br />
+            ประวัติส่วนตัว
+        </div>
+
     </div>
+</div>
 </body>
-
+<script src="assets/js/libs/js.cookie.min.js"></script>
 <script src="assets/js/libs/jquery.min.js"></script>
-<script src="assets/js/libs/facebook.js"></script>
 <script src="assets/js/libs/bootstrap.min.js"></script>
-<script src="assets/js/libs/facebook.js"></script>
+<script src="assets/js/auth/facebook.js"></script>
 <script src="assets/js/index.js"></script>
-
-<script>
-    FB.api('/me', function (response) {
-        fbinfo = new Array();
-        fbinfo[0] = response.id;
-        fbinfo[1] = response.first_name;
-        fbinfo[2] = response.last_name;
-        fbinfo[3] = response.email;
-
-       document.getElementById("pfnot").setAttribute("src", "http://graph.facebook.com/" + response.id + "/picture?type=normal");
-    });
-</script>
-
 </html>
