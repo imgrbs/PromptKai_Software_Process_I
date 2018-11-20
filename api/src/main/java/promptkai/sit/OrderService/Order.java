@@ -12,15 +12,17 @@ public class Order {
     private Date orderDate;
     private int amount;
     private double total;
+    private String location;
 
 
     public Order() {
     }
 
-    public Order(Date orderDate, int amount, double total) {
+    public Order(Date orderDate, int amount, double total, String location) {
         this.orderDate = orderDate;
         this.amount = amount;
         this.total = total;
+        this.location = location;
     }
 
     public long getOrderId() {
@@ -53,5 +55,13 @@ public class Order {
 
     public void setTotal(double total) {
         this.total = total;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 }

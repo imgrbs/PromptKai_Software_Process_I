@@ -39,7 +39,8 @@ public class PaymentController {
             @RequestParam(value = "description") String description,
             @RequestParam(value = "totalPrice") String totalPrice,
             @RequestParam(value = "amount") String totalAmount,
-            @RequestParam(value = "userId") String userId
+            @RequestParam(value = "userId") String userId,
+            @RequestParam(value = "location") String location
         ) {
         long priceLong = 0;
         double priceDouble = 0;
@@ -58,7 +59,7 @@ public class PaymentController {
                             .amount(priceLong)
                             .currency(this.CURRENCY)
                             .card(token));
-            orderRepository.save(new Order(new Date(), amount, priceDouble));
+            orderRepository.save(new Order(new Date(), amount, priceDouble, location));
             paymentRepository.save(new Payment("Credit Card", new Date(), userId));
         } catch (Exception e) {
             e.printStackTrace();
