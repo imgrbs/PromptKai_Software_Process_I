@@ -1,11 +1,17 @@
+@font-face {
+    src: url('../font/supermarket.ttf');
+    font-family: 'supermarket';
+}
+
 body
 {
 	margin: 0;
 	padding: 0;
-	background-color: PowderBlue;
+	background-color: white;
 	background-size: cover;
-	font-family: sans-serif;
+	
 }
+
 .loginBox
 {
 	position: absolute;
@@ -16,7 +22,7 @@ body
 	height: 420px;
 	padding: 80px 40px;
 	box-sizing: border-box;
-	background: rgba(0,0,0,.5);
+	background:white;
 }
 .user
 {
@@ -32,7 +38,7 @@ h2
 {
 	margin: 0;
 	padding: 0 0 20px;
-	color: white;
+	color: #2F80ED;
 	text-align: center;
 }
 
