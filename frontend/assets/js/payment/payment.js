@@ -14,8 +14,9 @@ $.get("https://promptkai-api-bright-chimpanzee.mybluemix.net/product/"+productId
         $('#totalprice').text(totalPrice);
         $('#quantity').text(quantity)
 
-        $('#productId').text(product.id);
-        $('#totalPrice').text(totalPrice);
+        document.getElementById('productId').value = product.id;
+        document.getElementById('totalPrice').value = totalPrice;
+        document.getElementById('amount').value = quantity;
 
         document.getElementById('description').value = 'Product order ฿' + totalPrice + '.00'
         document.getElementById('omise').setAttribute('data-amount', totalPrice * 100)
