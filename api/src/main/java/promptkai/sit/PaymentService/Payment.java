@@ -22,7 +22,7 @@ public class Payment {
     public Payment() {
     }
 
-    public Payment(String paymentMethod, Date paidDate, String userId, OrderDetail orderDetail) {
+    public Payment(String paymentMethod, Date paidDate, String userId) {
         this.paymentMethod = paymentMethod;
         this.paidDate = paidDate;
         this.userId = userId;
