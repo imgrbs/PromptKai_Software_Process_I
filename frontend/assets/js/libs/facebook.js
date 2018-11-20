@@ -1,7 +1,6 @@
 function statusChangeCallback(response) {
     console.log('statusChangeCallback');
     if (response.status === 'connected') {
-        lgToProfile();
         fetchUser();
     } else {
     }
@@ -30,13 +29,10 @@ function fetchUser() {
     });
 }
 
-function lgToProfile(){
-    var name = '<img src="assets/img/profile-success.png">';
 }
 
 function logout() {
     FB.logout(function(response) {
-        console.log(response)
     });
 }
 
