@@ -15,6 +15,7 @@ import co.omise.models.Charge;
 import co.omise.models.Token;
 
 import promptkai.sit.OrderService.Order;
+import promptkai.sit.OrderService.OrderDetail;
 import promptkai.sit.OrderService.OrderRepository;
 
 @RestController
@@ -42,8 +43,9 @@ public class PaymentController {
                             .amount(36000)
                             .currency(this.CURRENCY)
                             .card(token));
-            orderRepository.save(new Order(new Date(),1,360));
-            paymentRepository.save(new Payment(1,new Date(),client.hashCode()));
+            orderRepository.save(new Order(new Date(),1,320));
+            Payment insertingPayment = new Payment("Credit Card",new Date(),client.hashCode(),new OrderDetail());
+            paymentRepository.save(insertingPayment);
         } catch (Exception e) {
             e.printStackTrace();
         }

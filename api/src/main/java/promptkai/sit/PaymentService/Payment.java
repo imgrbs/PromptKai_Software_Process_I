@@ -1,5 +1,7 @@
 package promptkai.sit.PaymentService;
 
+import promptkai.sit.OrderService.OrderDetail;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.Date;
@@ -11,23 +13,22 @@ public class Payment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long paymentId;
 
-    private long paymentMethodId;
+    private String paymentMethod;
 
     private Date paidDate;
 
-    private long userId;
+    private int userId;
+
+    private OrderDetail orderDetail;
+
     public Payment() {
     }
 
-    public Payment(long paymentMethodId, Date paidDate) {
-        this.paymentMethodId = paymentMethodId;
-        this.paidDate = paidDate;
-    }
-
-    public Payment(long paymentMethodId, Date paidDate, long userId) {
-        this.paymentMethodId = paymentMethodId;
+    public Payment(String paymentMethod, Date paidDate, int userId, OrderDetail orderDetail) {
+        this.paymentMethod = paymentMethod;
         this.paidDate = paidDate;
         this.userId = userId;
+        this.orderDetail = orderDetail;
     }
 
     public long getPaymentId() {
@@ -38,12 +39,28 @@ public class Payment {
         this.paymentId = paymentId;
     }
 
-    public long getPaymentMethodId() {
-        return paymentMethodId;
+    public String getPaymentMethod() {
+        return paymentMethod;
     }
 
-    public void setPaymentMethodId(long paymentMethodId) {
-        this.paymentMethodId = paymentMethodId;
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public OrderDetail getOrderDetail() {
+        return orderDetail;
+    }
+
+    public void setOrderDetail(OrderDetail orderDetail) {
+        this.orderDetail = orderDetail;
     }
 
     public Date getPaidDate() {
