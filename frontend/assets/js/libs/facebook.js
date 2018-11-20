@@ -10,6 +10,11 @@ function statusChangeCallback(response) {
         // Logged into your app and Facebook.
         testAPI();
         window.location.href='profile.html';
+        FB.api('/me', function(response) {
+            var username = response.name;
+            document.getElementById('pfnot') = username;
+        });
+
     } else {
         // The person is not logged into your app or we are unable to tell.
         document.getElementById('status').innerHTML = 'Please log ' +
