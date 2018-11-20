@@ -13,40 +13,41 @@
 <button class="button-back fixed-top mt-3 px-2">
     <img src="assets/img/back.png" alt="arrow">
 </button>
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-12 text-center pt-3 pb-2">
-            <h3 class="mb-0">ซื้อสินค้า</h3>
-        </div>
-    </div>
-</div>
-<div class="container-fluid pt-3">
-    <div class="row">
-        <div class="col-6">
-            <img class="w-100" src="assets/img/bag.png" alt="item">
-        </div>
-        <div class="col-6">
-            <h5><b>กระเป๋าใส่เหรียญ</b></h5>
-            <h5>ราคา 160 บาท</h5>
-            <h6>จำนวน 2 ชิ้น</h6>
-            <h6 class="blue">รวม 320 บาท</h6>
-        </div>
-        <div class="col-12 my-3">
-            <h6>ชื่อ - ที่อยู่ ผู้รับ</h6>
-            <textarea rows="4" class="w-100 form-control">
-จินตนา บัวบาน
-บ้านเลขที่ 12 หมู่ 5  ตำบลดอยแก้ว
-อำเภอจอมทอง
-จังหวัดเชียงใหม่ 50160
-                </textarea>
-        </div>
-
-    </div>
-</div>
-
 <form name="checkoutForm" method="POST" action="https://promptkai-api-bright-chimpanzee.mybluemix.net/payment">
-    <input type="hidden" name="description" value="Product order ฿100.25" />
-    <script type="text/javascript" src="https://cdn.omise.co/card.js"
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 text-center pt-3 pb-2">
+                <h3 class="mb-0">ซื้อสินค้า</h3>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid pt-3">
+        <div class="row">
+            <div class="col-6">
+                <img class="w-100" src="assets/img/bag.png" alt="item">
+            </div>
+            <div class="col-6">
+                <h5><b>กระเป๋าใส่เหรียญ</b></h5>
+                <h5>ราคา 160 บาท</h5>
+                <h6>จำนวน 2 ชิ้น</h6>
+                <h6 class="blue">รวม 320 บาท</h6>
+            </div>
+            <div class="col-12 my-3">
+                <h6>ชื่อ - ที่อยู่ ผู้รับ</h6>
+                <textarea rows="4" class="w-100 form-control">
+    จินตนา บัวบาน
+    บ้านเลขที่ 12 หมู่ 5  ตำบลดอยแก้ว
+    อำเภอจอมทอง
+    จังหวัดเชียงใหม่ 50160
+                    </textarea>
+            </div>
+
+        </div>
+    </div>
+
+    <input id='description' type="hidden" name="description" value="" />
+    <input id='description' type="hidden" name="userId" value="" />
+    <script id='omise' type="text/javascript" src="https://cdn.omise.co/card.js"
         data-key="pkey_test_5dy8qdzhwano9n1by3v"
         data-image="https://sit-promptkai.netlify.com/assets/img/logo.png"
         data-frame-label="PromptKai"
@@ -56,7 +57,7 @@
         data-location="no"
         data-amount="32000"
         data-currency="thb"
-        >
+    >
     </script>
 </form>
 </body>
