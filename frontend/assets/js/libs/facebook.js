@@ -11,6 +11,7 @@ function statusChangeCallback(response) {
     console.log('statusChangeCallback');
     if (response.status === 'connected') {
         fetchUser();
+        setProfile();
         redirectPreviousPath();
     } else {
         redirectToLogin();
@@ -46,6 +47,16 @@ function fetchUser() {
     });
 }
 
+function setProfile() {
+    return FB.api('/me', { fields: 'id,name,email' },function (response) {
+        var profileSection = document.getElementById("profile_section");
+        if (profileSection) {
+            document.getElementById("profile_image").setAttribute("src", "https://graph.facebook.com/" + response.id + "/picture?type=normal");
+            document.getElementById("name").innerText = response.name;
+            document.getElementById("email").innerText = response.email;
+        }
+    });
+}
 
 function redirectPreviousPath(){
     const cookiePath = Cookies.get('path');
