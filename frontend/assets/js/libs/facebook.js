@@ -33,6 +33,9 @@ window.fbAsyncInit = function() {
         statusChangeCallback(response);
     });
 
+    FB.Event.subscribe("auth.logout", function() {
+        window.location.replace("/")
+    });
 };
 
 function fetchUser() {
@@ -45,6 +48,7 @@ function fetchUser() {
 
 function logout() {
     FB.logout(function(response) {
+        console.log('logout')
     });
 }
 
