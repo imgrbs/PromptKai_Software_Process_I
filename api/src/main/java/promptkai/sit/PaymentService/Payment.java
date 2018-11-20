@@ -17,14 +17,14 @@ public class Payment {
 
     private Date paidDate;
 
-    private int userId;
+    private String userId;
 
     private OrderDetail orderDetail;
 
     public Payment() {
     }
 
-    public Payment(String paymentMethod, Date paidDate, int userId, OrderDetail orderDetail) {
+    public Payment(String paymentMethod, Date paidDate, String userId, OrderDetail orderDetail) {
         this.paymentMethod = paymentMethod;
         this.paidDate = paidDate;
         this.userId = userId;
@@ -47,11 +47,11 @@ public class Payment {
         this.paymentMethod = paymentMethod;
     }
 
-    public int getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
