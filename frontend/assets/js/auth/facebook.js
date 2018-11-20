@@ -44,6 +44,7 @@ window.fbAsyncInit = function() {
 function fetchUser() {
     return FB.api('/me', function(response) {
         console.log('Successful login for: ' + response.name);
+        console.log('Access Token = '+ access_token);
     });
 }
 
