@@ -18,7 +18,6 @@ public class SitApplication {
 				= new FilterRegistrationBean<>();
 
 		registrationBean.setFilter(new FacebookAuthFilter());
-		registrationBean.addUrlPatterns("/payment/*");
 		registrationBean.addUrlPatterns("/payments/*");
 
 		return registrationBean;
