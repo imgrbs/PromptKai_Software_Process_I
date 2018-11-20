@@ -19,6 +19,11 @@ button.button-back {
 
 }
 
+.disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+}
+
 button.button-primary {
     background: #2F80ED;
     color: #ffffff;

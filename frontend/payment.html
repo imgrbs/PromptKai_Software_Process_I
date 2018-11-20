@@ -7,7 +7,7 @@
     <title>PromptKai ft. Software Process I</title>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/index.css">
-    <link rel="stylesheet" href="assets/css/product/product_payment.css">
+    <link rel="stylesheet" href="assets/css/payment.css">
 </head>
 <body>
 <button class="button-back fixed-top mt-3 px-2">
@@ -41,34 +41,41 @@
                 </textarea>
         </div>
         <div class="col-12">
-            <h6>เลือกวิธีชำระเงิน</h6>
-            <div class="row">
-                <div class="col-4">
-                    <button class="border bg-white rounded-circle pt-1 payment-method">
-                        ชำระเงินปลายทาง
-                    </button>
-                </div>
-                <div class="col-4">
-                    <button style="font-size: 0.8em;" class="border bg-white rounded-circle pt-1 payment-method">
-                        Credit /
-                        Debit Card
-                    </button>
-                </div>
-                <div class="col-4">
-                    <button class="border bg-white rounded-circle pt-1 payment-method">
-                        Counter Service
-                    </button>
-                </div>
-            </div>
+            <h6>วิธีชำระเงิน</h6>
+        </div>
+        <div class="col-12 d-flex justify-content-between">
+            <button class="border bg-white rounded-circle pt-1 payment-method disabled">
+                ชำระเงินปลายทาง
+            </button>
+            <button class="border bg-white rounded-circle pt-1 payment-method payment-method-selected">
+                Credit /
+                Debit Card
+            </button>
+            <button class="border bg-white rounded-circle pt-1 payment-method disabled">
+                Counter Service
+            </button>
         </div>
     </div>
 </div>
-<button class="fixed-bottom w-100 text-center button-primary pt-2 pb-1">
-    <span>ยืนยัน</span>
-</button>
+
+<form name="checkoutForm" method="POST" action="http://localhost:8080/payment">
+    <input type="hidden" name="description" value="Product order ฿100.25" />
+    <script type="text/javascript" src="https://cdn.omise.co/card.js"
+        data-key="pkey_test_5dy8qdzhwano9n1by3v"
+        data-image="https://sit-promptkai.netlify.com/assets/img/logo.png"
+        data-frame-label="PromptKai"
+        data-button-label="ยืนยัน"
+        data-submit-label="ยืนยัน"
+        data-location="yes"
+        data-amount="32000"
+        data-currency="thb"
+        >
+    </script>
+</form>
 </body>
 <script src="assets/js/libs/jquery.min.js"></script>
 <script src="assets/js/libs/bootstrap.min.js"></script>
 <script src="assets/js/index.js"></script>
 <script src="assets/js/payment/payment.js"></script>
+<script src="assets/js/payment/payment_credit.js"></script>
 </html>

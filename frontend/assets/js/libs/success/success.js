@@ -1,3 +1,5 @@
 $(document).ready(function () {
-     window.location.href='success.html';
-});
+    setTimeout(function () {
+     window.location.href='index.html';
+    }, 5000);
+ });

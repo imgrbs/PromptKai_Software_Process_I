@@ -14,7 +14,15 @@ public class Product {
     private String productDetail;
     private String productPrice;
     private String productType;
+    private String imgPath;
 
+    public String getImgPath() {
+        return imgPath;
+    }
+
+    public void setImgPath(String imgPath) {
+        this.imgPath = imgPath;
+    }
 
     public long getId() {
         return id;
