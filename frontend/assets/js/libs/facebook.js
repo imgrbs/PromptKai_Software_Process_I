@@ -12,6 +12,7 @@ function statusChangeCallback(response) {
     if (response.status === 'connected') {
         fetchUser();
     } else {
+        redirectToLogin();
     }
 }
 
@@ -44,6 +45,13 @@ function fetchUser() {
     });
 }
 
+
+function redirectToLogin(){
+    const path = window.location.pathname;
+    if (!path.includes('login')) {
+        Cookies.set('path', path);
+        return window.location.replace("/login");
+    }
 }
 
 function logout() {
