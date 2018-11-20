@@ -57,6 +57,10 @@ function setProfile() {
             document.getElementById("name").innerText = response.name;
             document.getElementById("email").innerText = response.email;
         }
+        var userIdElement = document.getElementById("userId");
+        if (userIdElement) {
+            userIdElement.value = response.id;
+        }
     });
 }
 
