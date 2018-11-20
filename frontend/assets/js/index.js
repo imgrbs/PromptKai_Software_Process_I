@@ -22,7 +22,25 @@ $('#type').on('change', function() {
             }
         });
     }else{
-        $.get("https://promptkai-api-bright-chimpanzee.mybluemix.net/products?filter="+filter, function (data, status) {
+        var filterEng;
+        switch(filter) {
+            case "กระเป๋า":
+                filterEng = "bag";
+                break;
+            case "เครื่องประดับ":
+                filterEng = "accessory";
+                break;
+            case "รองเท้า":
+                filterEng = "shoes";
+                break;
+            case "เสื้อผ้า":
+                filterEng = "cloth";
+                break;
+            default:
+                filterEng = "";
+        }
+
+        $.get("https://promptkai-api-bright-chimpanzee.mybluemix.net/products?filter="+filterEng, function (data, status) {
             if (status == 'success') {
                 var productElements = '';
                 data.forEach(function (product) {
