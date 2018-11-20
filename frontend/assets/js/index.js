@@ -25,16 +25,16 @@ $('#type').on('change', function() {
         var filterEng;
         switch(filter) {
             case "กระเป๋า":
-                filterEng = bag;
+                filterEng = "bag";
                 break;
             case "เครื่องประดับ":
-                filterEng = accessory;
+                filterEng = "accessory";
                 break;
             case "รองเท้า":
-                filterEng = shoes;
+                filterEng = "shoes";
                 break;
             case "เสื้อผ้า":
-                filterEng = cloth;
+                filterEng = "cloth";
                 break;
             default:
                 filterEng = "";
