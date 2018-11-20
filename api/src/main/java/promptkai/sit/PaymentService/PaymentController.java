@@ -12,10 +12,10 @@ import java.util.Optional;
 
 import co.omise.Client;
 import co.omise.models.Charge;
-import co.omise.models.Token;
 
 import promptkai.sit.OrderService.Order;
 import promptkai.sit.OrderService.OrderDetail;
+import promptkai.sit.OrderService.OrderDetailRepository;
 import promptkai.sit.OrderService.OrderRepository;
 
 @RestController
@@ -25,6 +25,8 @@ public class PaymentController {
     private PaymentRepository paymentRepository;
     @Autowired
     private OrderRepository orderRepository;
+    @Autowired
+    private OrderDetailRepository orderDetailRepository;
 
     private String CURRENCY = "thb";
     private int STANG = 100;
@@ -37,6 +39,7 @@ public class PaymentController {
     public RedirectView savePayments(
             @RequestParam(value = "omiseToken") String token,
             @RequestParam(value = "description") String description,
+            @RequestParam(value = "productId") String productIdInput,
             @RequestParam(value = "totalPrice") String totalPrice,
             @RequestParam(value = "amount") String totalAmount,
             @RequestParam(value = "userId") String userId,
@@ -45,10 +48,12 @@ public class PaymentController {
         long priceLong = 0;
         double priceDouble = 0;
         int amount = 0;
+        long productId = 0;
         try {
             priceLong = Long.parseLong(totalPrice) * STANG;
             priceDouble = priceLong / STANG;
             amount = Integer.parseInt(totalAmount);
+            productId = Long.parseLong(productIdInput);
         } catch (NumberFormatException e) {
             e.printStackTrace();
         }
@@ -59,8 +64,9 @@ public class PaymentController {
                             .amount(priceLong)
                             .currency(this.CURRENCY)
                             .card(token));
-            orderRepository.save(new Order(new Date(), amount, priceDouble, location));
-            paymentRepository.save(new Payment("Credit Card", new Date(), userId));
+            Order order = orderRepository.save(new Order(new Date(), amount, priceDouble, location));
+            Payment payment = paymentRepository.save(new Payment("Credit Card", new Date(), userId));
+            orderDetailRepository.save(new OrderDetail(productId, payment.getPaymentId(), order.getOrderId(), amount, priceDouble));
         } catch (Exception e) {
             e.printStackTrace();
         }
