@@ -8,7 +8,7 @@ $(document).ready(function () {
                     product.id+'" style="color:black ; text-decoration: none" >'+
                     '<div class="col-6 col-lg-3 text-center mb-3">' +
                     '<div class="card border-0">' +
-                    '<img class="card-img-top" src="' + product.imgPath + '" alt=" + product.productName + ">' +
+                    '<img class="card-img-top" src="' + product.imgPath + '" alt="' + product.productName + '">' +
                     '<div class="card-body p-0">' +
                     '<h5 class="mt-3 mb-0"><b>' + product.productName + '</b></h5>' +
                     'รหัสสินค้า' + product.id + '<br>' +
