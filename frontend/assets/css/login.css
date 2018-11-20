@@ -3,28 +3,17 @@
     font-family: 'supermarket';
 }
 
-body
-{
-	margin: 0;
-	padding: 0;
+body{
 	background-color: #3b5998;
 	background-size: cover;
-	font-family: 'supermarket';
 }
 
-.loginBox
-{
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%,-50%);
-	width: 350px;
-	height: 420px;
-	padding: 80px 40px;
-	box-sizing: border-box;
-	background:white;
-	border-radius: 5px;
+
+
+.height-100-vh {
+    min-height: 100vh;
 }
+
 .user
 {
 	width: 100px;
@@ -44,11 +33,3 @@ h2
 	font-family: 'supermarket';
 }
 
-
-.facebookBox{
-    position: absolute;
-    	top: 50%;
-    	left: 50%;
-    	transform: translate(-50%,-50%);
-    	padding: 80px 40px;
-}
