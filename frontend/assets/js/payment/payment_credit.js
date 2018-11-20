@@ -1,0 +1,1 @@
+document.querySelector('.OmiseCheckoutForm img').src = window.location.host + '/assets/img/logo.png';
