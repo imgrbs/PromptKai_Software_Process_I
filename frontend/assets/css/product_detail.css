@@ -1,0 +1,9 @@
+div.gallery {
+    width: 100%;
+    overflow-x: scroll;
+    display: flex;
+}
+
+div.gallery img {
+    width: 330px;
+}
