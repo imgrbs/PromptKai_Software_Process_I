@@ -63,12 +63,28 @@
         </div>
     </div>
 </div>
-<button class="fixed-bottom w-100 text-center button-primary pt-2 pb-1">
+<button class="omise-checkout-button fixed-bottom w-100 text-center button-primary pt-2 pb-1">
     <span>ยืนยัน</span>
 </button>
+
+<form name="checkoutForm" method="POST" action="http://localhost:8080/payment">
+    <input type="hidden" name="description" value="Product order ฿100.25" />
+    <script type="text/javascript" src="https://cdn.omise.co/card.js"
+        data-key="pkey_test_5dy8qdzhwano9n1by3v"
+        data-image="/assets/img/logo.png"
+        data-frame-label="PromptKai"
+        data-button-label="ชำระเงิน"
+        data-submit-label="ยืนยัน"
+        data-location="yes"
+        data-amount="32000"
+        data-currency="thb"
+        >
+    </script>
+</form>
 </body>
 <script src="assets/js/libs/jquery.min.js"></script>
 <script src="assets/js/libs/bootstrap.min.js"></script>
 <script src="assets/js/index.js"></script>
 <script src="assets/js/payment/payment.js"></script>
+<script src="assets/js/payment/payment_credit.js"></script>
 </html>
