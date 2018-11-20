@@ -19,16 +19,13 @@ public class Payment {
 
     private int userId;
 
-    private OrderDetail orderDetail;
-
     public Payment() {
     }
 
-    public Payment(String paymentMethod, Date paidDate, int userId, OrderDetail orderDetail) {
+    public Payment(String paymentMethod, Date paidDate, int userId) {
         this.paymentMethod = paymentMethod;
         this.paidDate = paidDate;
         this.userId = userId;
-        this.orderDetail = orderDetail;
     }
 
     public long getPaymentId() {
@@ -53,14 +50,6 @@ public class Payment {
 
     public void setUserId(int userId) {
         this.userId = userId;
-    }
-
-    public OrderDetail getOrderDetail() {
-        return orderDetail;
-    }
-
-    public void setOrderDetail(OrderDetail orderDetail) {
-        this.orderDetail = orderDetail;
     }
 
     public Date getPaidDate() {
