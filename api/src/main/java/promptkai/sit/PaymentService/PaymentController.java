@@ -34,17 +34,19 @@ public class PaymentController {
     )
     public RedirectView savePayments(
             @RequestParam(value = "omiseToken") String token,
-            @RequestParam(value = "description") String description
+            @RequestParam(value = "description") String description,
+            @RequestParam(value = "totalPrice") long totalPrice,
+            @RequestParam(value = "userId") String userId
         ) {
         try {
             Client client = new Client("skey_test_5dy8qdzi5g8ofgar25g");
             Charge charge = client.charges()
                     .create(new Charge.Create()
-                            .amount(36000)
+                            .amount(totalPrice)
                             .currency(this.CURRENCY)
                             .card(token));
             orderRepository.save(new Order(new Date(),1,320));
-            Payment payment = new Payment("Credit Card", new Date(), client.hashCode());
+            Payment payment = new Payment("Credit Card", new Date(), userId);
             paymentRepository.save(payment);
         } catch (Exception e) {
             e.printStackTrace();
