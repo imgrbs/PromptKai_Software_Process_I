@@ -17,6 +17,8 @@ public class PaymentController {
     @Autowired
     private PaymentRepository paymentRepository;
 
+    private String CURRENCY = "thb";
+
     @RequestMapping(
             value = "/payment",
             method = RequestMethod.POST,
@@ -31,8 +33,9 @@ public class PaymentController {
             Charge charge = client.charges()
                     .create(new Charge.Create()
                             .amount(100000)
-                            .currency("thb")
+                            .currency(this.CURRENCY)
                             .card(token));
+
         } catch (Exception e) {
             e.printStackTrace();
         }
