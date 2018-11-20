@@ -23,9 +23,11 @@ import promptkai.sit.OrderService.OrderRepository;
 public class PaymentController {
     @Autowired
     private PaymentRepository paymentRepository;
+    @Autowired
     private OrderRepository orderRepository;
 
     private String CURRENCY = "thb";
+    private int STANG = 100;
 
     @RequestMapping(
             value = "/payment",
@@ -35,19 +37,29 @@ public class PaymentController {
     public RedirectView savePayments(
             @RequestParam(value = "omiseToken") String token,
             @RequestParam(value = "description") String description,
-            @RequestParam(value = "totalPrice") long totalPrice,
+            @RequestParam(value = "totalPrice") String totalPrice,
+            @RequestParam(value = "amount") String totalAmount,
             @RequestParam(value = "userId") String userId
         ) {
+        long priceLong = 0;
+        double priceDouble = 0;
+        int amount = 0;
+        try {
+            priceLong = Long.parseLong(totalPrice) * STANG;
+            priceDouble = priceLong / STANG;
+            amount = Integer.parseInt(totalAmount);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
         try {
             Client client = new Client("skey_test_5dy8qdzi5g8ofgar25g");
             Charge charge = client.charges()
                     .create(new Charge.Create()
-                            .amount(totalPrice)
+                            .amount(priceLong)
                             .currency(this.CURRENCY)
                             .card(token));
-            orderRepository.save(new Order(new Date(),1,320));
-            Payment payment = new Payment("Credit Card", new Date(), userId);
-            paymentRepository.save(payment);
+            orderRepository.save(new Order(new Date(), amount, priceDouble));
+            paymentRepository.save(new Payment("Credit Card", new Date(), userId));
         } catch (Exception e) {
             e.printStackTrace();
         }
