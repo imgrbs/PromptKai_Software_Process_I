@@ -1,6 +1,7 @@
 package promptkai.sit.OrderService;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
@@ -9,11 +10,21 @@ import java.util.Date;
 @Table(name="orders")
 public class Order {
     @Id
+    @GeneratedValue
     private long orderId;
     private Date orderDate;
     private int amount;
     private double total;
 
+
+    public Order() {
+    }
+
+    public Order(Date orderDate, int amount, double total) {
+        this.orderDate = orderDate;
+        this.amount = amount;
+        this.total = total;
+    }
 
     public long getOrderId() {
         return orderId;
