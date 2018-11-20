@@ -7,7 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import promptkai.sit.OrderService.Order;
+import promptkai.sit.OrderService.OrderRepository;
 
+
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,6 +20,7 @@ import java.util.Optional;
 public class PaymentController {
     @Autowired
     private PaymentRepository paymentRepository;
+    private OrderRepository orderRepository;
 
     private String CURRENCY = "thb";
 
@@ -35,10 +40,12 @@ public class PaymentController {
                             .amount(100000)
                             .currency(this.CURRENCY)
                             .card(token));
-
+            orderRepository.save(new Order(new Date(),1,360));
+            paymentRepository.save(new Payment(1,new Date(),client.hashCode()));
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         return new ResponseEntity<List<Payment>>(paymentRepository.findAll(), HttpStatus.OK);
     }
 
