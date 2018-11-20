@@ -7,7 +7,7 @@
     <title>PromptKai ft. Software Process I</title>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/index.css">
-    <link rel="stylesheet" href="assets/css/product/product_payment.css">
+    <link rel="stylesheet" href="assets/css/payment.css">
 </head>
 <body>
 <button class="button-back fixed-top mt-3 px-2">
@@ -41,25 +41,19 @@
                 </textarea>
         </div>
         <div class="col-12">
-            <h6>เลือกวิธีชำระเงิน</h6>
-            <div class="row">
-                <div class="col-4">
-                    <button class="border bg-white rounded-circle pt-1 payment-method">
-                        ชำระเงินปลายทาง
-                    </button>
-                </div>
-                <div class="col-4">
-                    <button style="font-size: 0.8em;" class="border bg-white rounded-circle pt-1 payment-method">
-                        Credit /
-                        Debit Card
-                    </button>
-                </div>
-                <div class="col-4">
-                    <button class="border bg-white rounded-circle pt-1 payment-method">
-                        Counter Service
-                    </button>
-                </div>
-            </div>
+            <h6>วิธีชำระเงิน</h6>
+        </div>
+        <div class="col-12 d-flex justify-content-between">
+            <button class="border bg-white rounded-circle pt-1 payment-method disabled">
+                ชำระเงินปลายทาง
+            </button>
+            <button class="border bg-white rounded-circle pt-1 payment-method payment-method-selected">
+                Credit /
+                Debit Card
+            </button>
+            <button class="border bg-white rounded-circle pt-1 payment-method disabled">
+                Counter Service
+            </button>
         </div>
     </div>
 </div>

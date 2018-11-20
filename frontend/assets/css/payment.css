@@ -1,0 +1,13 @@
+button.payment-method {
+    font-size: 1.2em;
+    height: 100px;
+    width: 100px;
+    background: #fff;
+    transition: .3s;
+}
+button.payment-method:hover, button.payment-method:active {
+    border-color: #2F80ED !important;
+}
+button.payment-method-selected {
+    border-color: #2F80ED !important;
+}
